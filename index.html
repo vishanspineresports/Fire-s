@@ -6,11 +6,16 @@
 <title>Fire S - Free Fire Tournament App</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* --------------------
+    1. GENERAL STYLES
+-------------------- */
 * { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif; }
 body { background-color: #0a0a0a; color:#fff; }
 a { text-decoration: none; color: inherit; }
 
-/* Header */
+/* --------------------
+    2. HEADER & NAVIGATION
+-------------------- */
 header {
     display: flex; 
     justify-content: space-between; 
@@ -40,7 +45,7 @@ header .app-title {
     font-weight:bold;
 }
 
-/* Download Button */
+/* Download Button (Header) */
 header .download-btn {
     padding: 6px 15px; 
     background: #ff0000; 
@@ -53,28 +58,34 @@ header .download-btn {
 }
 header .download-btn:hover { background:#ff3333; }
 
+/* --------------------
+    3. SECTIONS & HERO
+-------------------- */
+section { padding:40px 15px; text-align:center; }
+section h2 { font-size:2em; margin-bottom:20px; color:#ff0000; }
+
 /* Hero Section */
 .hero { text-align:center; padding:60px 15px; background: linear-gradient(135deg,#ff0000,#000);}
 .hero h1 { font-size:2.2em; margin-bottom:15px; }
 .hero p { font-size:1em; margin-bottom:30px; }
 
-/* Download buttons */
+/* Download buttons (Highlighted) */
 .download-btn.highlighted {
     background-color: #ff0000; color: #fff; padding: 12px 30px; font-size: 1em; border-radius:8px; border: 2px solid #000; display: inline-block; transition:0.3s;
 }
 .download-btn.highlighted:hover { background-color:#ff3333; }
 
-/* Section Titles */
-section { padding:40px 15px; text-align:center; }
-section h2 { font-size:2em; margin-bottom:20px; color:#ff0000; }
-
-/* Features Section */
+/* --------------------
+    4. FEATURES
+-------------------- */
 .features { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
 .feature-card { background:#1a1a1a; padding:15px; width:220px; border-radius:10px; transition:.3s; }
 .feature-card:hover { background:#ff0000; color:#fff; transform:translateY(-5px); }
 .feature-card h3 { margin-bottom:10px; color:#ff0000; }
 
-/* Slider Section */
+/* --------------------
+    5. SLIDER
+-------------------- */
 .slider-container { max-width: 100%; margin: 20px auto; text-align:center; position: relative; }
 .slider-title { font-size:1.8em; margin-bottom:15px; color:#ff0000; }
 .slider { width:100%; max-width:561px; height:auto; overflow:hidden; border:2px solid #ff0000; border-radius:10px; margin:auto; position: relative; }
@@ -98,11 +109,15 @@ section h2 { font-size:2em; margin-bottom:20px; color:#ff0000; }
 }
 .dot.active { background:#ff0000; }
 
-/* Footer */
+/* --------------------
+    6. FOOTER
+-------------------- */
 footer { background:#1a1a1a; padding:20px 15px; text-align:center; }
 footer a { color:#ff0000; font-weight:bold; }
 
-/* Responsive Adjustments */
+/* --------------------
+    7. RESPONSIVE DESIGN
+-------------------- */
 @media(max-width:768px){
     header { flex-direction: row; justify-content: space-between; padding:10px 15px; }
     header img { width:50px; height:50px; }
@@ -128,21 +143,18 @@ footer a { color:#ff0000; font-weight:bold; }
 </head>
 <body>
 
-<!-- Header -->
 <header>
     <img src="App logo.png" alt="Fire S Logo">
     <div class="app-title">Fire S</div>
     <a href="https://ga-fs.primexop.com/12046/androidBuilds/fire-sV1.apk" class="download-btn highlighted">Download</a>
 </header>
 
-<!-- Hero Section -->
 <section class="hero">
     <h1>Fire S</h1>
     <p>Join the ultimate Free Fire tournaments and compete with players worldwide!</p>
     <a href="https://ga-fs.primexop.com/12046/androidBuilds/fire-sV1.apk" class="download-btn highlighted">Download Now</a>
 </section>
 
-<!-- About + Slider Section -->
 <section id="about">
     <h2>About the App</h2>
     <p>Fire S is your one-stop app for Free Fire tournaments. Create or join tournaments, track your ranking, and win rewards!</p>
@@ -156,11 +168,9 @@ footer a { color:#ff0000; font-weight:bold; }
                 <div class="slide"><img src="IMG-3" alt="App Screenshot 3"></div>
             </div>
 
-            <!-- Navigation Buttons -->
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
 
-            <!-- Dots -->
             <div class="dots">
                 <span class="dot" onclick="currentSlide(0)"></span>
                 <span class="dot" onclick="currentSlide(1)"></span>
@@ -170,7 +180,6 @@ footer a { color:#ff0000; font-weight:bold; }
     </div>
 </section>
 
-<!-- Features Section -->
 <section id="features">
     <h2>Features</h2>
     <div class="features">
@@ -189,7 +198,6 @@ footer a { color:#ff0000; font-weight:bold; }
     </div>
 </section>
 
-<!-- Download Section -->
 <section id="download">
     <h2>Download Fire S</h2>
     <p>Get the app now and start your tournament journey!</p>
@@ -197,7 +205,6 @@ footer a { color:#ff0000; font-weight:bold; }
     <p style="margin-top:20px;">Or contact us via <a href="https://wa.me/8793855913" target="_blank">WhatsApp</a></p>
 </section>
 
-<!-- Footer -->
 <footer>
     <p>© 2025 Fire S. All rights reserved.</p>
     <p>Contact us: <a href="https://wa.me/8793855913" target="_blank">WhatsApp</a></p>
@@ -213,22 +220,26 @@ function showSlide(n){
     else if(n < 0) slideIndex = slides.length - 1;
     else slideIndex = n;
 
+    // This calculation ensures the slider moves correctly based on the current slide index
     const sliderWidth = document.querySelector('.slider').offsetWidth;
     const offset = -slideIndex * sliderWidth;
     document.querySelector('.slides').style.transform = `translateX(${offset}px)`;
 
+    // Update dots
     dots.forEach(dot => dot.classList.remove('active'));
     dots[slideIndex].classList.add('active');
 }
 
+// Event Listeners for Next/Previous buttons
 document.querySelector('.next').addEventListener('click', () => showSlide(slideIndex + 1));
 document.querySelector('.prev').addEventListener('click', () => showSlide(slideIndex - 1));
 
+// Function to call from dot clicks
 function currentSlide(n){
     showSlide(n);
 }
 
-// Initialize
+// Initialize the first slide
 showSlide(slideIndex);
 </script>
 
