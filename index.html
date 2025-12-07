@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fire S - Free Fire Tournament App</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Roboto', sans-serif; }
+body { background-color: #0a0a0a; color:#fff; }
+a { text-decoration: none; color: inherit; }
+
+/* Header */
+header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 20px; 
+    background:#1a1a1a; 
+    position: sticky; 
+    top:0; 
+    z-index:100;
+}
+
+/* Logo */
+header img {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #ff0000;
+}
+
+/* App Title */
+header .app-title {
+    flex-grow:1;
+    text-align:center;
+    color:#ff0000;
+    font-size:1.5em;
+    font-weight:bold;
+}
+
+/* Download Button */
+header .download-btn {
+    padding: 6px 15px; 
+    background: #ff0000; 
+    border: 2px solid #000; 
+    border-radius:8px; 
+    color:#fff; 
+    cursor:pointer; 
+    transition:0.3s;
+    font-size:0.9em;
+}
+header .download-btn:hover { background:#ff3333; }
+
+/* Hero Section */
+.hero { text-align:center; padding:60px 15px; background: linear-gradient(135deg,#ff0000,#000);}
+.hero h1 { font-size:2.2em; margin-bottom:15px; }
+.hero p { font-size:1em; margin-bottom:30px; }
+
+/* Download buttons */
+.download-btn.highlighted {
+    background-color: #ff0000; color: #fff; padding: 12px 30px; font-size: 1em; border-radius:8px; border: 2px solid #000; display: inline-block; transition:0.3s;
+}
+.download-btn.highlighted:hover { background-color:#ff3333; }
+
+/* Section Titles */
+section { padding:40px 15px; text-align:center; }
+section h2 { font-size:2em; margin-bottom:20px; color:#ff0000; }
+
+/* Features Section */
+.features { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; }
+.feature-card { background:#1a1a1a; padding:15px; width:220px; border-radius:10px; transition:.3s; }
+.feature-card:hover { background:#ff0000; color:#fff; transform:translateY(-5px); }
+.feature-card h3 { margin-bottom:10px; color:#ff0000; }
+
+/* Slider Section */
+.slider-container { max-width: 100%; margin: 20px auto; text-align:center; position: relative; }
+.slider-title { font-size:1.8em; margin-bottom:15px; color:#ff0000; }
+.slider { width:100%; max-width:561px; height:auto; overflow:hidden; border:2px solid #ff0000; border-radius:10px; margin:auto; position: relative; }
+.slides { display:flex; transition: transform 0.5s ease-in-out; }
+.slide { flex-shrink:0; width:100%; }
+.slide img { width:561px; height:1028px; max-width:100%; height:auto; border-radius:10px; display:block; }
+
+/* Slider Navigation Buttons */
+.prev, .next {
+    position: absolute; top:50%; transform:translateY(-50%);
+    background: rgba(0,0,0,0.5); color:#fff; border:none; font-size:2em; padding:5px 12px; cursor:pointer; border-radius:5px;
+}
+.prev { left:5px; }
+.next { right:5px; }
+.prev:hover, .next:hover { background: rgba(255,0,0,0.8); }
+
+/* Slider Dots */
+.dots { text-align:center; position:absolute; bottom:10px; width:100%; }
+.dot {
+    display:inline-block; width:12px; height:12px; margin:0 5px; background:#bbb; border-radius:50%; cursor:pointer;
+}
+.dot.active { background:#ff0000; }
+
+/* Footer */
+footer { background:#1a1a1a; padding:20px 15px; text-align:center; }
+footer a { color:#ff0000; font-weight:bold; }
+
+/* Responsive Adjustments */
+@media(max-width:768px){
+    header { flex-direction: row; justify-content: space-between; padding:10px 15px; }
+    header img { width:50px; height:50px; }
+    header .download-btn { padding:5px 12px; font-size:0.8em; }
+    header .app-title { font-size:1.2em; }
+    .hero h1 { font-size:1.8em; }
+    .hero p { font-size:0.9em; }
+    section h2 { font-size:1.5em; }
+    .features { flex-direction:column; align-items:center; }
+    .feature-card { width:90%; max-width:300px; }
+    .slider { max-width:95%; height:auto; }
+    .slide img { width:100%; height:auto; }
+}
+
+@media(max-width:480px){
+    .hero h1 { font-size:1.5em; }
+    .hero p { font-size:0.85em; }
+    .download-btn.highlighted { font-size:0.9em; padding:10px 20px; }
+    .slider-title { font-size:1.4em; }
+    header .app-title { font-size:1em; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <img src="images/gameadda-logo.png" alt="Fire S Logo">
+    <div class="app-title">Fire S</div>
+    <a href="#download" class="download-btn highlighted">Download</a>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Fire S</h1>
+    <p>Join the ultimate Free Fire tournaments and compete with players worldwide!</p>
+    <a href="#download" class="download-btn highlighted">Download Now</a>
+</section>
+
+<!-- About + Slider Section -->
+<section id="about">
+    <h2>About the App</h2>
+    <p>Fire S is your one-stop app for Free Fire tournaments. Create or join tournaments, track your ranking, and win rewards!</p>
+    
+    <div class="slider-container">
+        <div class="slider-title">App Screenshot</div>
+        <div class="slider">
+            <div class="slides">
+                <div class="slide"><img src="images/screenshot1.png" alt="App Screenshot 1"></div>
+                <div class="slide"><img src="images/screenshot2.png" alt="App Screenshot 2"></div>
+                <div class="slide"><img src="images/screenshot3.png" alt="App Screenshot 3"></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+
+            <!-- Dots -->
+            <div class="dots">
+                <span class="dot" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features">
+    <h2>Features</h2>
+    <div class="features">
+        <div class="feature-card">
+            <h3>Real-Time Matches</h3>
+            <p>Participate in live tournaments with players worldwide.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Secure Wallet</h3>
+            <p>Easily deposit and withdraw winnings securely.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Daily Challenges</h3>
+            <p>Complete daily challenges and earn rewards.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Download Section -->
+<section id="download">
+    <h2>Download Fire S</h2>
+    <p>Get the app now and start your tournament journey!</p>
+    <a href="https://example.com/fires.apk" class="download-btn highlighted">Download APK</a>
+    <p style="margin-top:20px;">Or contact us via <a href="https://wa.me/9518692138" target="_blank">WhatsApp</a></p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 Fire S. All rights reserved.</p>
+    <p>Contact us: <a href="https://wa.me/9518692138" target="_blank">WhatsApp</a></p>
+</footer>
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+
+function showSlide(n){
+    if(n >= slides.length) slideIndex = 0;
+    else if(n < 0) slideIndex = slides.length - 1;
+    else slideIndex = n;
+
+    const sliderWidth = document.querySelector('.slider').offsetWidth;
+    const offset = -slideIndex * sliderWidth;
+    document.querySelector('.slides').style.transform = `translateX(${offset}px)`;
+
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[slideIndex].classList.add('active');
+}
+
+document.querySelector('.next').addEventListener('click', () => showSlide(slideIndex + 1));
+document.querySelector('.prev').addEventListener('click', () => showSlide(slideIndex - 1));
+
+function currentSlide(n){
+    showSlide(n);
+}
+
+// Initialize
+showSlide(slideIndex);
+</script>
+
+</body>
+</html>
